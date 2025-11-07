@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Inicia sesión o regístrate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 1280px;
+            margin: 132px auto 0;
+            padding: 20px;
+            gap: 60px;
+            flex: 1;
+        }
+
+        .left-section {
+            max-width: 580px;
+            margin-right: 0;
+            padding-right: 32px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .logo-text {
+            font-size: 60px;
+            font-weight: bold;
+            color: #1877f2;
+            letter-spacing: -2px;
+            line-height: 64px;
+            margin-bottom: 16px;
+        }
+
+        .slogan {
+            font-size: 28px;
+            font-weight: normal;
+            line-height: 32px;
+            color: #1c1e21;
+            margin-top: -10px;
+            padding-left: 4px;
+        }
+
+        .login-form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+            padding: 16px;
+            width: 396px;
+            margin-top: -20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            color: #1d2129;
+            height: 52px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+            outline: none;
+        }
+
+        .login-button {
+            background-color: #1877f2;
+            border: none;
+            border-radius: 6px;
+            font-size: 20px;
+            line-height: 48px;
+            padding: 0 16px;
+            width: 100%;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 16px;
+            height: 48px;
+        }
+
+        .login-button:hover {
+            background-color: #166fe5;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-bottom: 16px;
+            padding-top: 6px;
+        }
+
+        .forgot-password a {
+            color: #1877f2;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            align-items: center;
+            border-bottom: 1px solid #dadde1;
+            display: flex;
+            margin: 20px 16px;
+        }
+
+        .create-account {
+            display: flex;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .create-button {
+            background-color: #42b72a;
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            line-height: 48px;
+            padding: 0 16px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            height: 48px;
+        }
+
+        .create-button:hover {
+            background-color: #36a420;
+        }
+
+        .create-page {
+            margin-top: 28px;
+            text-align: center;
+            font-size: 14px;
+            color: #1c1e21;
+        }
+
+        .create-page a {
+            color: #1c1e21;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .create-page a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 20px 0;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 30 20px;
+        }
+
+        .languages {
+            border-bottom: 1px solid #dddfe2;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        .languages a, .footer-links a {
+            color: #8a8d91;
+            font-size: 12px;
+            text-decoration: none;
+            margin-right: 10px;
+            line-height: 1.6;
+        }
+
+        .languages a:hover, .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-bottom: 8px;
+        }
+
+        .footer-links-row {
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            color: #8a8d91;
+            font-size: 11px;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: #f02849;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                margin-top: 40px;
+            }
+            
+            .left-section {
+                margin-bottom: 40px;
+                padding-right: 0;
+                max-width: 400px;
+            }
+            
+            .logo-text {
+                font-size: 48px;
+                line-height: 52px;
+            }
+            
+            .slogan {
+                font-size: 24px;
+                line-height: 28px;
+            }
+            
+            .login-form {
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+                <div class="logo-text">facebook</div>
+            </div>
+            <h2 class="slogan">Facebook te ayuda a comunicarte y compartir con las personas que forman parte de tu vida.</h2>
+        </div>
+        
+        <div class="right-section">
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Correo electrónico o número de teléfono" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                </div>
+                
+                <button type="submit" class="login-button">Iniciar sesión</button>
+                
+                <div class="error-message" id="errorMessage">
+                    La contraseña que has introducido es incorrecta.
+                </div>
+                
+                <div class="forgot-password">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="create-account">
+                    <button type="button" class="create-button">Crear cuenta nueva</button>
+                </div>
+            </form>
+            
+            <div class="create-page">
+                <a href="#"><b>Crea una página</b></a> para una celebridad, una marca o un negocio.
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="languages">
+                <a href="#">Español</a>
+                <a href="#">English (US)</a>
+                <a href="#">Português (Brasil)</a>
+                <a href="#">Français (France)</a>
+                <a href="#">Italiano</a>
+                <a href="#">Deutsch</a>
+                <a href="#">العربية</a>
+                <a href="#">हिन्दी</a>
+                <a href="#">中文(简体)</a>
+                <a href="#">日本語</a>
+                <a href="#">+</a>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-links-row">
+                    <a href="#">Registrarte</a>
+                    <a href="#">Iniciar sesión</a>
+                    <a href="#">Messenger</a>
+                    <a href="#">Facebook Lite</a>
+                    <a href="#">Video</a>
+                    <a href="#">Lugares</a>
+                    <a href="#">Juegos</a>
+                    <a href="#">Marketplace</a>
+                    <a href="#">Meta Pay</a>
+                    <a href="#">Tienda Meta</a>
+                    <a href="#">Meta Quest</a>
+                    <a href="#">Meta AI</a>
+                    <a href="#">Meta Portal</a>
+                </div>
+                <div class="footer-links-row">
+                    <a href="#">Instagram</a>
+                    <a href="#">Threads</a>
+                    <a href="#">Recaudaciones de fondos</a>
+                    <a href="#">Servicios</a>
+                    <a href="#">Centro de información de votación</a>
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Centro de privacidad</a>
+                    <a href="#">Grupos</a>
+                    <a href="#">Información</a>
+                    <a href="#">Crear anuncio</a>
+                    <a href="#">Crear página</a>
+                    <a href="#">Desarrolladores</a>
+                </div>
+                <div class="footer-links-row">
+                    <a href="#">Empleo</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">Opciones de anuncios</a>
+                    <a href="#">Condiciones</a>
+                    <a href="#">Ayuda</a>
+                    <a href="#">Subir contactos y no usuarios</a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                Meta © 2023
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Simulación de validación
+            if (email && password) {
+                // Aquí normalmente se enviarían los datos al servidor
+                alert('Inicio de sesión simulado. En una aplicación real, se enviarían los datos al servidor.');
+                errorMessage.style.display = 'none';
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        });
+        
+        document.querySelector('.create-button').addEventListener('click', function() {
+            alert('Funcionalidad de crear cuenta nueva. En una aplicación real, esto abriría un formulario de registro.');
+        });
+    </script>
+</body>
+</html>
